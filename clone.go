@@ -42,7 +42,7 @@ func Clone(url string, path string, options *CloneOptions) (*Repository, error) 
 	var ptr *C.git_repository
 	ret := C.git_clone(&ptr, curl, cpath, copts)
 
-	if ret < 0 {
+	if ret != 0 {
 		return nil, MakeGitError(ret)
 	}
 
